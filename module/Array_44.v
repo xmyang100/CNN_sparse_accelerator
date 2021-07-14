@@ -1,23 +1,23 @@
 `timescale 1ns/100ps
 
 module Array_44 #(
-	parameter int unsigned DATA_WIDTH = 8,
-	parameter int unsigned BLOCK_SIZE = 4,
-	parameter int unsigned SELECT_WIDTH = 2
-	parameter int unsigned ARRAY_SIZE = 4,
+	parameter DATA_WIDTH = 8,
+	parameter BLOCK_SIZE = 4,
+	parameter SELECT_WIDTH = 2,
+	parameter ARRAY_SIZE = 4
 	)(
-	input unsigned [BLOCK_SIZE*BLOCK_SIZE*DATA_WIDTH-1:0]Input_act[ARRAY_SIZE-1:0],
-	input unsigned [DATA_WIDTH-1:0]Input_weight[ARRAY_SIZE-1:0],
-	input unsigned [DATA_WIDTH-1:0]Resultln[BLOCK_SIZE*ARRAY_SIZE-1:0]
-	input unsigned [3:0]mask[ARRAY_SIZE*ARRAY_SIZE-1:0],
+	input [BLOCK_SIZE*BLOCK_SIZE*DATA_WIDTH-1:0]Input_act[ARRAY_SIZE-1:0],
+	input [DATA_WIDTH-1:0]Input_weight[ARRAY_SIZE-1:0],
+	input [DATA_WIDTH-1:0]Resultln[BLOCK_SIZE*ARRAY_SIZE-1:0],
+	input [3:0]mask[ARRAY_SIZE*ARRAY_SIZE-1:0],
 	input Block_control,
 	input Direction,
 	input Control,
 	input ResultCapture,
 	input Clk,
-	input Rst,
+	input rst,
 	output [4*DATA_WIDTH-1:0]Array_Output[BLOCK_SIZE*ARRAY_SIZE-1:0]
-	)
+	);
 	
 	wire [4*DATA_WIDTH-1:0]Array_process[4*(BLOCK_SIZE-1)*BLOCK_SIZE-1:0];
 	
@@ -33,7 +33,7 @@ module Array_44 #(
 	(
 		.Input_act_data(Input_act[0]),
 		.Input_weight(Input_weight[0]),
-		.mask(mask[0])
+		.mask(mask[0]),
 		.Block_control(Block_control),
 		.Direction(Direction),
 		.Control(Control),
@@ -60,7 +60,7 @@ module Array_44 #(
 	(
 		.Input_act_data(Input_act[1]),
 		.Input_weight(Input_weight[0]),
-		.mask(mask[4])
+		.mask(mask[4]),
 		.Block_control(Block_control),
 		.Direction(Direction),
 		.Control(Control),
@@ -87,7 +87,7 @@ module Array_44 #(
 	(
 		.Input_act_data(Input_act[2]),
 		.Input_weight(Input_weight[0]),
-		.mask(mask[8])
+		.mask(mask[8]),
 		.Block_control(Block_control),
 		.Direction(Direction),
 		.Control(Control),
@@ -114,7 +114,7 @@ module Array_44 #(
 	(
 		.Input_act_data(Input_act[3]),
 		.Input_weight(Input_weight[0]),
-		.mask(mask[12])
+		.mask(mask[12]),
 		.Block_control(Block_control),
 		.Direction(Direction),
 		.Control(Control),
@@ -142,7 +142,7 @@ module Array_44 #(
 	(
 		.Input_act_data(Input_act[0]),
 		.Input_weight(Input_weight[1]),
-		.mask(mask[1])
+		.mask(mask[1]),
 		.Block_control(Block_control),
 		.Direction(Direction),
 		.Control(Control),
@@ -169,7 +169,7 @@ module Array_44 #(
 	(
 		.Input_act_data(Input_act[1]),
 		.Input_weight(Input_weight[1]),
-		.mask(mask[5])
+		.mask(mask[5]),
 		.Block_control(Block_control),
 		.Direction(Direction),
 		.Control(Control),
@@ -196,7 +196,7 @@ module Array_44 #(
 	(
 		.Input_act_data(Input_act[2]),
 		.Input_weight(Input_weight[1]),
-		.mask(mask[9])
+		.mask(mask[9]),
 		.Block_control(Block_control),
 		.Direction(Direction),
 		.Control(Control),
@@ -223,7 +223,7 @@ module Array_44 #(
 	(
 		.Input_act_data(Input_act[3]),
 		.Input_weight(Input_weight[1]),
-		.mask(mask[13])
+		.mask(mask[13]),
 		.Block_control(Block_control),
 		.Direction(Direction),
 		.Control(Control),
@@ -251,7 +251,7 @@ module Array_44 #(
 	(
 		.Input_act_data(Input_act[0]),
 		.Input_weight(Input_weight[2]),
-		.mask(mask[2])
+		.mask(mask[2]),
 		.Block_control(Block_control),
 		.Direction(Direction),
 		.Control(Control),
@@ -278,7 +278,7 @@ module Array_44 #(
 	(
 		.Input_act_data(Input_act[1]),
 		.Input_weight(Input_weight[2]),
-		.mask(mask[6])
+		.mask(mask[6]),
 		.Block_control(Block_control),
 		.Direction(Direction),
 		.Control(Control),
@@ -305,7 +305,7 @@ module Array_44 #(
 	(
 		.Input_act_data(Input_act[2]),
 		.Input_weight(Input_weight[2]),
-		.mask(mask[10])
+		.mask(mask[10]),
 		.Block_control(Block_control),
 		.Direction(Direction),
 		.Control(Control),
@@ -332,7 +332,7 @@ module Array_44 #(
 	(
 		.Input_act_data(Input_act[3]),
 		.Input_weight(Input_weight[2]),
-		.mask(mask[14])
+		.mask(mask[14]),
 		.Block_control(Block_control),
 		.Direction(Direction),
 		.Control(Control),
@@ -360,7 +360,7 @@ module Array_44 #(
 	(
 		.Input_act_data(Input_act[0]),
 		.Input_weight(Input_weight[3]),
-		.mask(mask[3])
+		.mask(mask[3]),
 		.Block_control(Block_control),
 		.Direction(Direction),
 		.Control(Control),
@@ -387,7 +387,7 @@ module Array_44 #(
 	(
 		.Input_act_data(Input_act[1]),
 		.Input_weight(Input_weight[3]),
-		.mask(mask[7])
+		.mask(mask[7]),
 		.Block_control(Block_control),
 		.Direction(Direction),
 		.Control(Control),
@@ -414,7 +414,7 @@ module Array_44 #(
 	(
 		.Input_act_data(Input_act[2]),
 		.Input_weight(Input_weight[3]),
-		.mask(mask[11])
+		.mask(mask[11]),
 		.Block_control(Block_control),
 		.Direction(Direction),
 		.Control(Control),
@@ -441,7 +441,7 @@ module Array_44 #(
 	(
 		.Input_act_data(Input_act[3]),
 		.Input_weight(Input_weight[3]),
-		.mask(mask[15])
+		.mask(mask[15]),
 		.Block_control(Block_control),
 		.Direction(Direction),
 		.Control(Control),
